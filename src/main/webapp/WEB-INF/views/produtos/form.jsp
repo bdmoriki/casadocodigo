@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -9,38 +12,28 @@
 <body>
 	<form action="/casadocodigo/produtos" method="POST">
 		<div>
-			<label>Título</label>
-			<input type="text" name="titulo">		
+			<label>Título</label> <input type="text" name="titulo">
 		</div>
 
 		<div>
 			<label>Descrição</label>
-			<textarea 
-				rows="10" cols="20" name="descricao">
-			</textarea>		
+			<textarea rows="10" cols="20" name="descricao">
+			</textarea>
 		</div>
 
 		<div>
-			<label>Páginas</label>
-			<input type="text" name="paginas">		
+			<label>Páginas</label> <input type="text" name="paginas">
 		</div>
 
-		<div>
-			<label>E-book</label>
-			<input type="text" name="ebook">		
-		</div>
+		<c:forEach items="${tipos}" var="tipoPreco" varStatus="status">
+			<div>
+				<label>${tipoPreco}</label> 
+				<input type="text" name="precos[${status.index}].valor">
+				<input type="hidden" name="precos[${status.index}].tipo" value="${tipoPreco}" >
+			</div>
+		</c:forEach>
 
-		<div>
-			<label>Impresso</label>
-			<input type="text" name="impresso">		
-		</div>
-
-		<div>
-			<label>Combo</label>
-			<input type="text" name="combo">		
-		</div>
-	
-		<button type="submit">Cadastrar </button>
+		<button type="submit">Cadastrar</button>
 	</form>
 
 </body>
