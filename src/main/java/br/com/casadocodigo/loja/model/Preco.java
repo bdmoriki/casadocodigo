@@ -3,8 +3,6 @@ package br.com.casadocodigo.loja.model;
 import java.math.BigDecimal;
 
 import javax.persistence.Embeddable;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 
 @Embeddable
 public class Preco {
